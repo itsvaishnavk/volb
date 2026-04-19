@@ -3,7 +3,7 @@ export default function handler(req, res) {
     app: "VOLB",
     version: "1.0.0",
     size: "1.77 MB",
-    download: "/apk/volb.apk",
-    official: "https://volb.vercel.app"
+    updated: "April 19 2026",
+    download: "/apk/volb.apk"
   });
 }
