@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VOLB - Volume Assistant</title>
 
 <style>
@@ -15,9 +15,7 @@
   --shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth;}
 
 body{
   margin:0;
@@ -26,6 +24,27 @@ body{
   color:var(--text);
 }
 
+/* NAV */
+.nav{
+  position:sticky;
+  top:0;
+  background:#fff;
+  padding:10px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  z-index:10;
+}
+
+.nav a{
+  text-decoration:none;
+  font-size:13px;
+  color:#007aff;
+  font-weight:600;
+}
+
+/* CONTAINER */
 .container{
   max-width:720px;
   margin:auto;
@@ -56,24 +75,17 @@ body{
   font-size:26px;
 }
 
-.subtitle{
-  font-size:15px;
-  color:var(--muted);
-}
-
-.meta-line{
-  font-size:13px;
-  color:var(--muted);
-}
+.subtitle{color:var(--muted);}
+.meta-line{font-size:13px;color:var(--muted);}
 
 .download-btn{
   display:block;
-  margin-top:14px;
-  text-align:center;
+  margin-top:15px;
   padding:14px;
-  border-radius:14px;
-  background:linear-gradient(135deg,var(--blue),#4aa3ff);
+  text-align:center;
+  background:linear-gradient(135deg,#007aff,#4aa3ff);
   color:#fff;
+  border-radius:14px;
   text-decoration:none;
   font-weight:700;
 }
@@ -81,11 +93,11 @@ body{
 .about-btn{
   display:block;
   margin-top:10px;
-  text-align:center;
   padding:12px;
-  border-radius:12px;
+  text-align:center;
   background:#eef4ff;
   color:#007aff;
+  border-radius:12px;
   text-decoration:none;
   font-weight:600;
 }
@@ -97,23 +109,20 @@ body{
   margin-top:6px;
 }
 
+/* SECTION */
 .section{
-  margin-top:18px;
+  margin-top:20px;
   background:var(--card);
   border-radius:22px;
   padding:16px;
   box-shadow:var(--shadow);
 }
 
-.section h2{
-  margin-bottom:10px;
-  font-size:18px;
-}
+.section h2{margin-bottom:10px;}
 
 .card{
-  background:#fff;
   border:1px solid rgba(0,0,0,0.05);
-  border-radius:14px;
+  border-radius:12px;
   padding:12px;
   margin-bottom:10px;
   font-size:14px;
@@ -121,8 +130,8 @@ body{
 
 .notice{
   background:#eef4ff;
-  padding:14px;
-  border-radius:14px;
+  padding:12px;
+  border-radius:12px;
   font-size:14px;
 }
 
@@ -137,6 +146,16 @@ footer{
 
 <body>
 
+<!-- NAV -->
+<div class="nav">
+  <a href="#about">About</a>
+  <a href="#features">Features</a>
+  <a href="#permissions">Permissions</a>
+  <a href="#privacy">Privacy</a>
+  <a href="#tech">Technical</a>
+  <a href="#help">Help</a>
+</div>
+
 <div class="container">
 
 <!-- HERO -->
@@ -144,49 +163,77 @@ footer{
   <div class="app-header">
     <img src="https://i.ibb.co/67Zkp72k/20260418-230631.png" class="app-icon">
 
-    <div class="app-info">
+    <div>
       <h1>VOLB</h1>
       <div class="subtitle">Volume Button Assistant</div>
-      <div class="meta-line">Lightweight · Floating Controls · Android APK</div>
+      <div class="meta-line">Floating Controls · Lightweight · Android APK</div>
     </div>
   </div>
 
   <a id="downloadBtn" class="download-btn">Download APK</a>
   <a href="#about" class="about-btn">About App</a>
-
   <div id="appMeta" class="appMeta">Loading...</div>
 </div>
 
 <!-- ABOUT -->
 <div id="about" class="section">
   <h2>About</h2>
-  <div class="card">Control your phone volume without physical buttons.</div>
-  <div class="card">Floating controls available anytime.</div>
-  <div class="card">Designed for broken volume keys.</div>
+  <div class="card">VOLB allows you to control your device volume without using physical buttons.</div>
+  <div class="card">It creates floating on-screen controls that work over any app.</div>
+  <div class="card">Ideal for devices with broken volume keys or for users who prefer touch controls.</div>
 </div>
 
 <!-- FEATURES -->
-<div class="section">
+<div id="features" class="section">
   <h2>Features</h2>
-  <div class="card">Draggable floating buttons</div>
-  <div class="card">Auto-hide & transparency</div>
+  <div class="card">Floating draggable volume buttons</div>
+  <div class="card">Auto-hide and transparency after inactivity</div>
   <div class="card">Snap to screen edges</div>
-  <div class="card">Custom size & spacing</div>
+  <div class="card">Custom size, spacing, and position</div>
+  <div class="card">Quick remove via drag-to-delete</div>
 </div>
 
 <!-- PERMISSIONS -->
-<div class="section">
+<div id="permissions" class="section">
   <h2>Permissions</h2>
-  <div class="card"><b>Display Over Apps</b> – Floating UI</div>
-  <div class="card"><b>Foreground Service</b> – Keep running</div>
-  <div class="card"><b>Internet</b> – Popup messages only</div>
+  <div class="card"><b>Display Over Apps</b> – Required for floating buttons</div>
+  <div class="card"><b>Foreground Service</b> – Keeps controls active</div>
+  <div class="card"><b>Internet</b> – Used only for optional in-app popup messages</div>
+
+  <div class="notice">
+    VOLB does NOT access contacts, files, camera, or personal data.
+  </div>
 </div>
 
 <!-- PRIVACY -->
-<div class="section">
+<div id="privacy" class="section">
   <h2>Privacy</h2>
   <div class="card">No data collection</div>
-  <div class="card">No tracking</div>
+  <div class="card">No tracking or analytics</div>
+  <div class="card">No data sharing</div>
+</div>
+
+<!-- TECH -->
+<div id="tech" class="section">
+  <h2>Technical Details</h2>
+  <div class="card">Uses Android WindowManager overlay system</div>
+  <div class="card">Foreground service ensures continuous operation</div>
+  <div class="card">Real-time updates using SharedPreferences listener</div>
+  <div class="card">Optional popup system using API (on app launch only)</div>
+</div>
+
+<!-- HELP -->
+<div id="help" class="section">
+  <h2>Help & Bug Fix</h2>
+  <div class="card">
+    Need help or found a bug?<br><br>
+    Contact directly on Instagram:
+    <br><br>
+    <a href="https://instagram.com/_.vaishhhnav" target="_blank"
+       style="color:#007aff;font-weight:600;text-decoration:none;">
+       instagram.com/_.vaishhhnav
+    </a>
+  </div>
 </div>
 
 <footer>© 2026 VOLB</footer>
@@ -209,7 +256,7 @@ async function loadApp(){
       `Version ${data.version} • ${data.size} • Updated ${data.updated}`;
 
   }catch(e){
-    document.getElementById("appMeta").innerText = "Failed to load app info";
+    document.getElementById("appMeta").innerText = "Failed to load info";
   }
 }
 
