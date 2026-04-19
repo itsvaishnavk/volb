@@ -30,7 +30,6 @@ body{
   padding:20px;
 }
 
-/* HERO */
 .hero{
   background:var(--card);
   border-radius:26px;
@@ -62,7 +61,6 @@ body{
   color:var(--muted);
 }
 
-/* META LINE */
 .meta-line{
   margin-top:8px;
   font-size:13px;
@@ -70,7 +68,6 @@ body{
   font-weight:500;
 }
 
-/* DOWNLOAD */
 .download-btn{
   display:block;
   margin-top:18px;
@@ -81,11 +78,6 @@ body{
   color:#fff;
   text-decoration:none;
   font-weight:700;
-  transition:0.2s;
-}
-
-.download-btn:hover{
-  background:#0066d6;
 }
 
 .appMeta{
@@ -95,7 +87,6 @@ body{
   margin-top:6px;
 }
 
-/* SECTION */
 .section{
   margin-top:18px;
   background:var(--card);
@@ -109,7 +100,6 @@ body{
   font-size:18px;
 }
 
-/* CARD */
 .card{
   background:#fff;
   border:1px solid rgba(0,0,0,0.05);
@@ -120,7 +110,6 @@ body{
   color:#344054;
 }
 
-/* FEATURES */
 .feature{
   display:flex;
   gap:10px;
@@ -136,7 +125,6 @@ body{
   margin-top:6px;
 }
 
-/* NOTICE */
 .notice{
   background:#eef4ff;
   padding:14px;
@@ -144,7 +132,6 @@ body{
   font-size:14px;
 }
 
-/* FOOTER */
 footer{
   text-align:center;
   margin-top:20px;
@@ -166,11 +153,7 @@ footer{
       <div class="app-info">
         <h1>VOLB</h1>
         <div class="subtitle">Volume Button Assistant</div>
-
-        <!-- CLEAN META LINE -->
-        <div class="meta-line">
-          Lightweight · Simple UI · Android APK
-        </div>
+        <div class="meta-line">Lightweight · Simple UI · Android APK</div>
       </div>
     </div>
 
@@ -180,33 +163,69 @@ footer{
 
   <!-- ABOUT -->
   <div class="section">
-    <h2>About this app</h2>
-    <div class="card">
-      Control your phone volume without physical buttons.
-    </div>
-    <div class="card">
-      Perfect for devices with broken volume keys.
-    </div>
-    <div class="card">
-      Lightweight and smooth performance.
-    </div>
+    <h2>About</h2>
+    <div class="card">Control your phone volume without physical buttons.</div>
+    <div class="card">Useful for devices with broken volume keys.</div>
+    <div class="card">Lightweight and smooth performance.</div>
   </div>
 
   <!-- FEATURES -->
   <div class="section">
     <h2>Features</h2>
     <div class="feature"><div class="dot"></div><div>Quick volume control</div></div>
-    <div class="feature"><div class="dot"></div><div>Minimal clean UI</div></div>
+    <div class="feature"><div class="dot"></div><div>Clean minimal UI</div></div>
     <div class="feature"><div class="dot"></div><div>Low battery usage</div></div>
+  </div>
+
+  <!-- PERMISSIONS -->
+  <div class="section">
+    <h2>Permissions</h2>
+
+    <div class="card">
+      <b>Modify Audio Settings</b><br>
+      Used to control device volume.
+    </div>
+
+    <div class="card">
+      <b>Foreground Service</b><br>
+      Keeps volume control active.
+    </div>
+
+    <div class="card">
+      <b>Overlay (Optional)</b><br>
+      Enables floating controls on screen.
+    </div>
+
+    <div class="notice">
+      No access to contacts, files, or personal data.
+    </div>
+  </div>
+
+  <!-- PRIVACY -->
+  <div class="section">
+    <h2>Privacy Policy</h2>
+
+    <div class="card">No data collection.</div>
+    <div class="card">No tracking or analytics.</div>
+    <div class="card">No data sharing.</div>
+  </div>
+
+  <!-- SAFETY -->
+  <div class="section">
+    <h2>Safety</h2>
+
+    <div class="card">No ads or hidden features.</div>
+    <div class="card">Lightweight and secure.</div>
+    <div class="card">Transparent permissions usage.</div>
   </div>
 
   <!-- SECURITY -->
   <div class="section">
-    <h2>Security</h2>
+    <h2>Security Notice</h2>
     <div class="notice">
-      Official VOLB app only on<br>
+      Official VOLB app:<br>
       <b>https://apk-volb.vercel.app/</b><br><br>
-      Avoid downloading from unknown sources.
+      Always download from official source.
     </div>
   </div>
 
@@ -217,7 +236,7 @@ footer{
       Developer: <b>@_.vaishhhnav</b><br><br>
       <a href="https://instagram.com/_.vaishhhnav" target="_blank"
          style="color:#007aff;text-decoration:none;font-weight:600;">
-         Send Message
+         Message on Instagram
       </a>
     </div>
   </div>
@@ -229,18 +248,23 @@ footer{
 <script>
 async function loadApp(){
   try{
-    const res = await fetch('/api/update');
+    const res = await fetch('https://apk-volb.vercel.app/api/update.js');
     const data = await res.json();
 
-    document.getElementById("downloadBtn").href = data.download;
+    let link = data.download;
+    if(link.startsWith("/")){
+      link = "https://apk-volb.vercel.app" + link;
+    }
 
+    document.getElementById("downloadBtn").href = link;
     document.getElementById("appMeta").innerText =
-      "Version " + data.version + " • " + data.size + " • Updated " + data.updated;
+      `Version ${data.version} • ${data.size} • Updated ${data.updated}`;
 
   }catch(e){
-    document.getElementById("appMeta").innerText = "Info unavailable";
+    document.getElementById("appMeta").innerText = "Failed to load app info";
   }
 }
+
 loadApp();
 </script>
 
