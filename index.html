@@ -47,7 +47,6 @@ body{
   width:85px;
   height:85px;
   border-radius:20px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.1);
 }
 
 .app-info h1{
@@ -56,16 +55,13 @@ body{
 }
 
 .subtitle{
-  margin-top:4px;
   font-size:15px;
   color:var(--muted);
 }
 
 .meta-line{
-  margin-top:8px;
   font-size:13px;
   color:var(--muted);
-  font-weight:500;
 }
 
 .download-btn{
@@ -96,7 +92,7 @@ body{
 }
 
 .section h2{
-  margin:0 0 10px;
+  margin-bottom:10px;
   font-size:18px;
 }
 
@@ -107,22 +103,6 @@ body{
   padding:12px;
   margin-bottom:10px;
   font-size:14px;
-  color:#344054;
-}
-
-.feature{
-  display:flex;
-  gap:10px;
-  margin-bottom:10px;
-  font-size:14px;
-}
-
-.dot{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:var(--blue);
-  margin-top:6px;
 }
 
 .notice{
@@ -130,6 +110,16 @@ body{
   padding:14px;
   border-radius:14px;
   font-size:14px;
+}
+
+/* collapsible */
+details{
+  margin-top:10px;
+}
+summary{
+  cursor:pointer;
+  font-weight:600;
+  color:var(--blue);
 }
 
 footer{
@@ -145,103 +135,116 @@ footer{
 
 <div class="container">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="app-header">
-      <img src="https://i.ibb.co/67Zkp72k/20260418-230631.png" class="app-icon">
+<!-- HERO -->
+<div class="hero">
+  <div class="app-header">
+    <img src="https://i.ibb.co/67Zkp72k/20260418-230631.png" class="app-icon">
 
-      <div class="app-info">
-        <h1>VOLB</h1>
-        <div class="subtitle">Volume Button Assistant</div>
-        <div class="meta-line">Lightweight · Simple UI · Android APK</div>
-      </div>
+    <div class="app-info">
+      <h1>VOLB</h1>
+      <div class="subtitle">Volume Button Assistant</div>
+      <div class="meta-line">Lightweight · Floating Controls · Android APK</div>
     </div>
-
-    <a id="downloadBtn" class="download-btn" href="#">Download APK</a>
-    <div id="appMeta" class="appMeta">Loading...</div>
   </div>
 
-  <!-- ABOUT -->
-  <div class="section">
-    <h2>About</h2>
-    <div class="card">Control your phone volume without physical buttons.</div>
-    <div class="card">Useful for devices with broken volume keys.</div>
-    <div class="card">Lightweight and smooth performance.</div>
-  </div>
+  <a id="downloadBtn" class="download-btn">Download APK</a>
+  <div id="appMeta" class="appMeta">Loading...</div>
+</div>
 
-  <!-- FEATURES -->
-  <div class="section">
-    <h2>Features</h2>
-    <div class="feature"><div class="dot"></div><div>Quick volume control</div></div>
-    <div class="feature"><div class="dot"></div><div>Clean minimal UI</div></div>
-    <div class="feature"><div class="dot"></div><div>Low battery usage</div></div>
-  </div>
+<!-- ABOUT -->
+<div class="section">
+  <h2>About</h2>
+  <div class="card">Control volume without physical buttons.</div>
+  <div class="card">Floating controls available anytime.</div>
+  <div class="card">Designed for broken volume keys.</div>
+</div>
 
-  <!-- PERMISSIONS -->
-  <div class="section">
-    <h2>Permissions</h2>
+<!-- FEATURES -->
+<div class="section">
+  <h2>Features</h2>
+  <div class="card">Draggable floating buttons</div>
+  <div class="card">Auto-hide & transparency</div>
+  <div class="card">Snap to screen edges</div>
+  <div class="card">Custom size & spacing</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section">
+  <h2>How it works</h2>
+  <div class="card">Enable overlay permission</div>
+  <div class="card">Turn on floating service</div>
+  <div class="card">Use buttons over any app</div>
+</div>
+
+<!-- PERMISSIONS -->
+<div class="section">
+  <h2>Permissions</h2>
+
+  <div class="card"><b>Display Over Apps</b> – Floating buttons</div>
+  <div class="card"><b>Foreground Service</b> – Keep active</div>
+  <div class="card"><b>Internet</b> – Optional updates only</div>
+
+  <div class="notice">
+    No access to contacts, files, or personal data.
+  </div>
+</div>
+
+<!-- PRIVACY -->
+<div class="section">
+  <h2>Privacy</h2>
+  <div class="card">No data collection</div>
+  <div class="card">No tracking</div>
+</div>
+
+<!-- TECHNICAL -->
+<div class="section">
+  <h2>Technical Details</h2>
+
+  <details>
+    <summary>View Technical Breakdown</summary>
 
     <div class="card">
-      <b>Modify Audio Settings</b><br>
-      Used to control device volume.
+      Uses WindowManager overlay system for floating UI.
     </div>
 
     <div class="card">
-      <b>Foreground Service</b><br>
-      Keeps volume control active.
+      Background foreground service ensures uptime.
     </div>
 
     <div class="card">
-      <b>Overlay (Optional)</b><br>
-      Enables floating controls on screen.
+      Real-time updates via SharedPreferences listener.
     </div>
 
-    <div class="notice">
-      No access to contacts, files, or personal data.
-    </div>
-  </div>
-
-  <!-- PRIVACY -->
-  <div class="section">
-    <h2>Privacy Policy</h2>
-
-    <div class="card">No data collection.</div>
-    <div class="card">No tracking or analytics.</div>
-    <div class="card">No data sharing.</div>
-  </div>
-
-  <!-- SAFETY -->
-  <div class="section">
-    <h2>Safety</h2>
-
-    <div class="card">No ads or hidden features.</div>
-    <div class="card">Lightweight and secure.</div>
-    <div class="card">Transparent permissions usage.</div>
-  </div>
-
-  <!-- SECURITY -->
-  <div class="section">
-    <h2>Security Notice</h2>
-    <div class="notice">
-      Official VOLB app:<br>
-      <b>https://apk-volb.vercel.app/</b><br><br>
-      Always download from official source.
-    </div>
-  </div>
-
-  <!-- CONTACT -->
-  <div class="section">
-    <h2>Contact</h2>
     <div class="card">
-      Developer: <b>@_.vaishhhnav</b><br><br>
-      <a href="https://instagram.com/_.vaishhhnav" target="_blank"
-         style="color:#007aff;text-decoration:none;font-weight:600;">
-         Message on Instagram
-      </a>
+      Lightweight API system for optional notifications.
     </div>
-  </div>
 
-  <footer>© 2026 VOLB</footer>
+    <div class="card">
+      Crash handling system improves stability.
+    </div>
+
+  </details>
+</div>
+
+<!-- SECURITY -->
+<div class="section">
+  <h2>Security</h2>
+  <div class="notice">
+    Official site:<br>
+    <b>https://apk-volb.vercel.app/</b>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section">
+  <h2>Contact</h2>
+  <div class="card">
+    Developer: @_.vaishhhnav<br><br>
+    <a href="https://instagram.com/_.vaishhhnav" target="_blank">Message</a>
+  </div>
+</div>
+
+<footer>© 2026 VOLB</footer>
 
 </div>
 
