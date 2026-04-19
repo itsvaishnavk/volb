@@ -15,7 +15,9 @@
   --shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-*{box-sizing:border-box;}
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
@@ -66,7 +68,7 @@ body{
 
 .download-btn{
   display:block;
-  margin-top:18px;
+  margin-top:14px;
   text-align:center;
   padding:14px;
   border-radius:14px;
@@ -74,6 +76,18 @@ body{
   color:#fff;
   text-decoration:none;
   font-weight:700;
+}
+
+.about-btn{
+  display:block;
+  margin-top:10px;
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  background:#eef4ff;
+  color:#007aff;
+  text-decoration:none;
+  font-weight:600;
 }
 
 .appMeta{
@@ -112,16 +126,6 @@ body{
   font-size:14px;
 }
 
-/* collapsible */
-details{
-  margin-top:10px;
-}
-summary{
-  cursor:pointer;
-  font-weight:600;
-  color:var(--blue);
-}
-
 footer{
   text-align:center;
   margin-top:20px;
@@ -148,13 +152,15 @@ footer{
   </div>
 
   <a id="downloadBtn" class="download-btn">Download APK</a>
+  <a href="#about" class="about-btn">About App</a>
+
   <div id="appMeta" class="appMeta">Loading...</div>
 </div>
 
 <!-- ABOUT -->
-<div class="section">
+<div id="about" class="section">
   <h2>About</h2>
-  <div class="card">Control volume without physical buttons.</div>
+  <div class="card">Control your phone volume without physical buttons.</div>
   <div class="card">Floating controls available anytime.</div>
   <div class="card">Designed for broken volume keys.</div>
 </div>
@@ -168,25 +174,12 @@ footer{
   <div class="card">Custom size & spacing</div>
 </div>
 
-<!-- HOW IT WORKS -->
-<div class="section">
-  <h2>How it works</h2>
-  <div class="card">Enable overlay permission</div>
-  <div class="card">Turn on floating service</div>
-  <div class="card">Use buttons over any app</div>
-</div>
-
 <!-- PERMISSIONS -->
 <div class="section">
   <h2>Permissions</h2>
-
-  <div class="card"><b>Display Over Apps</b> – Floating buttons</div>
-  <div class="card"><b>Foreground Service</b> – Keep active</div>
-  <div class="card"><b>Internet</b> – Optional updates only</div>
-
-  <div class="notice">
-    No access to contacts, files, or personal data.
-  </div>
+  <div class="card"><b>Display Over Apps</b> – Floating UI</div>
+  <div class="card"><b>Foreground Service</b> – Keep running</div>
+  <div class="card"><b>Internet</b> – Popup messages only</div>
 </div>
 
 <!-- PRIVACY -->
@@ -194,54 +187,6 @@ footer{
   <h2>Privacy</h2>
   <div class="card">No data collection</div>
   <div class="card">No tracking</div>
-</div>
-
-<!-- TECHNICAL -->
-<div class="section">
-  <h2>Technical Details</h2>
-
-  <details>
-    <summary>View Technical Breakdown</summary>
-
-    <div class="card">
-      Uses WindowManager overlay system for floating UI.
-    </div>
-
-    <div class="card">
-      Background foreground service ensures uptime.
-    </div>
-
-    <div class="card">
-      Real-time updates via SharedPreferences listener.
-    </div>
-
-    <div class="card">
-      Lightweight API system for optional notifications.
-    </div>
-
-    <div class="card">
-      Crash handling system improves stability.
-    </div>
-
-  </details>
-</div>
-
-<!-- SECURITY -->
-<div class="section">
-  <h2>Security</h2>
-  <div class="notice">
-    Official site:<br>
-    <b>https://apk-volb.vercel.app/</b>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div class="section">
-  <h2>Contact</h2>
-  <div class="card">
-    Developer: @_.vaishhhnav<br><br>
-    <a href="https://instagram.com/_.vaishhhnav" target="_blank">Message</a>
-  </div>
 </div>
 
 <footer>© 2026 VOLB</footer>
