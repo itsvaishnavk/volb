@@ -8,13 +8,11 @@
 <style>
 :root{
   --bg:#f5f7fb;
-  --card:rgba(255,255,255,0.92);
+  --card:#ffffff;
   --text:#101828;
   --muted:#667085;
-  --line:rgba(16,24,40,0.08);
   --blue:#007aff;
-  --blue-dark:#0066d6;
-  --shadow:0 12px 30px rgba(16,24,40,0.08);
+  --shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 *{box-sizing:border-box;}
@@ -34,51 +32,42 @@ body{
 
 /* HERO */
 .hero{
-  background:#fff;
-  border-radius:28px;
+  background:var(--card);
+  border-radius:26px;
   padding:20px;
   box-shadow:var(--shadow);
 }
 
 .app-header{
   display:flex;
-  gap:18px;
+  gap:16px;
   align-items:center;
 }
 
 .app-icon{
-  width:90px;
-  height:90px;
-  border-radius:22px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  width:85px;
+  height:85px;
+  border-radius:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.1);
 }
 
 .app-info h1{
   margin:0;
-  font-size:28px;
+  font-size:26px;
 }
 
 .subtitle{
-  margin-top:6px;
-  color:var(--muted);
+  margin-top:4px;
   font-size:15px;
+  color:var(--muted);
 }
 
-/* META */
-.meta-row{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:12px;
-}
-
-.pill{
-  padding:8px 12px;
-  background:#f2f4f7;
-  border-radius:999px;
+/* META LINE */
+.meta-line{
+  margin-top:8px;
   font-size:13px;
-  font-weight:600;
-  border:1px solid var(--line);
+  color:var(--muted);
+  font-weight:500;
 }
 
 /* DOWNLOAD */
@@ -86,12 +75,17 @@ body{
   display:block;
   margin-top:18px;
   text-align:center;
-  padding:15px;
-  border-radius:16px;
+  padding:14px;
+  border-radius:14px;
   background:linear-gradient(135deg,var(--blue),#4aa3ff);
   color:#fff;
   text-decoration:none;
   font-weight:700;
+  transition:0.2s;
+}
+
+.download-btn:hover{
+  background:#0066d6;
 }
 
 .appMeta{
@@ -104,8 +98,8 @@ body{
 /* SECTION */
 .section{
   margin-top:18px;
-  background:#fff;
-  border-radius:24px;
+  background:var(--card);
+  border-radius:22px;
   padding:16px;
   box-shadow:var(--shadow);
 }
@@ -115,13 +109,15 @@ body{
   font-size:18px;
 }
 
-/* CARDS */
+/* CARD */
 .card{
   background:#fff;
   border:1px solid rgba(0,0,0,0.05);
-  border-radius:16px;
+  border-radius:14px;
   padding:12px;
   margin-bottom:10px;
+  font-size:14px;
+  color:#344054;
 }
 
 /* FEATURES */
@@ -129,6 +125,7 @@ body{
   display:flex;
   gap:10px;
   margin-bottom:10px;
+  font-size:14px;
 }
 
 .dot{
@@ -143,7 +140,7 @@ body{
 .notice{
   background:#eef4ff;
   padding:14px;
-  border-radius:16px;
+  border-radius:14px;
   font-size:14px;
 }
 
@@ -165,14 +162,14 @@ footer{
   <div class="hero">
     <div class="app-header">
       <img src="https://i.ibb.co/67Zkp72k/20260418-230631.png" class="app-icon">
+
       <div class="app-info">
         <h1>VOLB</h1>
         <div class="subtitle">Volume Button Assistant</div>
 
-        <div class="meta-row">
-          <span class="pill">Lightweight</span>
-          <span class="pill">Simple UI</span>
-          <span class="pill">Android APK</span>
+        <!-- CLEAN META LINE -->
+        <div class="meta-line">
+          Lightweight · Simple UI · Android APK
         </div>
       </div>
     </div>
@@ -185,13 +182,13 @@ footer{
   <div class="section">
     <h2>About this app</h2>
     <div class="card">
-      Control volume without physical buttons. Useful for broken keys.
+      Control your phone volume without physical buttons.
     </div>
     <div class="card">
-      Clean, minimal and fast interface.
+      Perfect for devices with broken volume keys.
     </div>
     <div class="card">
-      Designed for low battery usage.
+      Lightweight and smooth performance.
     </div>
   </div>
 
@@ -199,8 +196,8 @@ footer{
   <div class="section">
     <h2>Features</h2>
     <div class="feature"><div class="dot"></div><div>Quick volume control</div></div>
-    <div class="feature"><div class="dot"></div><div>Simple interface</div></div>
-    <div class="feature"><div class="dot"></div><div>Lightweight performance</div></div>
+    <div class="feature"><div class="dot"></div><div>Minimal clean UI</div></div>
+    <div class="feature"><div class="dot"></div><div>Low battery usage</div></div>
   </div>
 
   <!-- SECURITY -->
@@ -209,7 +206,7 @@ footer{
     <div class="notice">
       Official VOLB app only on<br>
       <b>https://apk-volb.vercel.app/</b><br><br>
-      Avoid unknown sources.
+      Avoid downloading from unknown sources.
     </div>
   </div>
 
@@ -239,6 +236,7 @@ async function loadApp(){
 
     document.getElementById("appMeta").innerText =
       "Version " + data.version + " • " + data.size + " • Updated " + data.updated;
+
   }catch(e){
     document.getElementById("appMeta").innerText = "Info unavailable";
   }
