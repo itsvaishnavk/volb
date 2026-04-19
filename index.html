@@ -1,135 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VOLB Official</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VOLB - Volume Assistant</title>
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d0d0d;
-      color: #fff;
-      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+      background: #f5f6f8;
+      color: #111;
     }
 
-    header {
-      padding: 50px 20px;
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
     }
 
-    h1 {
-      font-size: 3rem;
-      color: #4da6ff;
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
     }
 
-    .tag {
-      color: #aaa;
-      margin-bottom: 20px;
+    .app-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .btn {
-      display: inline-block;
+    .app-info h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .app-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .download-btn {
+      display: block;
+      width: 100%;
       margin-top: 20px;
-      padding: 15px 35px;
-      font-size: 16px;
-      background: #4da6ff;
-      color: #000;
+      padding: 14px;
+      text-align: center;
+      background: #007aff;
+      color: #fff;
       text-decoration: none;
-      border-radius: 10px;
-      font-weight: bold;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
     }
 
-    .btn:hover {
-      background: #3399ff;
+    .download-btn:hover {
+      background: #0066d6;
     }
 
-    .info {
-      margin-top: 15px;
-      color: #ccc;
+    .meta {
+      text-align: center;
+      margin-top: 10px;
+      color: #777;
+      font-size: 14px;
     }
 
     .section {
-      padding: 40px 20px;
+      margin-top: 30px;
+    }
+
+    .section h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
     }
 
     .card {
-      background: #1a1a1a;
-      margin: 15px auto;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 400px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .notice {
+      background: #fff3cd;
+      color: #856404;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 14px;
     }
 
     footer {
+      text-align: center;
       margin-top: 40px;
-      padding: 20px;
-      font-size: 14px;
-      color: #777;
+      color: #999;
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>VOLB</h1>
-  <p class="tag">Volume Button Assistant</p>
+<div class="container">
 
-  <a id="downloadBtn" class="btn" href="#">Loading...</a>
-  <p id="appInfo" class="info"></p>
-</header>
-
-<section class="section">
-  <h2>Features</h2>
-
-  <div class="card">
-    <h3>Fix Broken Buttons</h3>
-    <p>Control volume without physical buttons.</p>
+  <!-- App Header -->
+  <div class="app-header">
+    <img src="https://i.ibb.co/67Zkp72k/20260418-230631.png" class="app-icon">
+    <div class="app-info">
+      <h1>VOLB</h1>
+      <p>Volume Button Assistant</p>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Lightweight</h3>
-    <p>Fast, smooth, and minimal battery usage.</p>
+  <!-- Download -->
+  <a id="downloadBtn" class="download-btn" href="#">Loading...</a>
+  <div id="appMeta" class="meta"></div>
+
+  <!-- Features -->
+  <div class="section">
+    <h2>About this app</h2>
+
+    <div class="card">
+      Control your phone volume without physical buttons. Perfect for devices with broken volume keys.
+    </div>
+
+    <div class="card">
+      Lightweight, fast, and easy to use interface.
+    </div>
+
+    <div class="card">
+      Designed for everyday use with minimal battery consumption.
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Official Source</h3>
-    <p>Download only from volb.vercel.app to avoid modified apps.</p>
+  <!-- Security Notice -->
+  <div class="section">
+    <h2>Security</h2>
+    <div class="notice">
+      Official VOLB app is available only on<br>
+      <b>volb.vercel.app</b><br><br>
+      Avoid downloading from unknown sources.
+    </div>
   </div>
-</section>
 
-<section class="section">
-  <h2>Security Notice</h2>
-  <p>
-    VOLB is officially distributed only via<br>
-    <b>https://volb.vercel.app</b><br><br>
-    Avoid downloading from unknown websites.
-  </p>
-</section>
+  <footer>
+    © 2026 VOLB
+  </footer>
 
-<footer>
-  © 2026 VOLB. All rights reserved.
-</footer>
+</div>
 
 <script>
-  async function loadAppData() {
+  async function loadApp() {
     try {
       const res = await fetch('/api/update');
       const data = await res.json();
 
       document.getElementById("downloadBtn").href = data.download;
-      document.getElementById("downloadBtn").innerText = "Download VOLB APK";
+      document.getElementById("downloadBtn").innerText = "Download APK";
 
-      document.getElementById("appInfo").innerText =
-        "Version: " + data.version + " | Size: " + data.size;
+      document.getElementById("appMeta").innerText =
+        "Version " + data.version + " • " + data.size;
 
-    } catch (err) {
-      document.getElementById("downloadBtn").innerText = "Download Failed";
+    } catch (e) {
+      document.getElementById("downloadBtn").innerText = "Download";
     }
   }
 
-  loadAppData();
+  loadApp();
 </script>
 
 </body>
